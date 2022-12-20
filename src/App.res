@@ -1,6 +1,6 @@
 @react.component
 let make = () => {
   <div>
-    <Hatfy hat=#alecell />
+    <Hatfy hat="#alecell" />
   </div>
 }
