@@ -4,8 +4,8 @@
   "description": "Add a christmas hat on your components",
   "scripts": {
     "res:build": "rescript build -with-deps",
-    "build": "node ./config/build.js",
-    "start": "webpack --watch --mode development | rescript build -with-deps -w | node ./config/server.js"
+    "build": "webpack --mode production --config webpack.prod.js",
+    "start": "webpack --watch --mode development --config webpack.dev.js | rescript build -with-deps -w | node server.js"
   },
   "author": "alecell",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "@rescript/react": "^0.10.3",
     "babel-loader": "^9.1.0",
     "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "live-server": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

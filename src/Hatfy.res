@@ -1,6 +1,14 @@
+type hats = [
+  | #christmass
+  | #alecell
+]
+
 @react.component
-let make = (~hat: string) => {
+let make = (~hat: hats) => {
   <div>
-    {React.string(hat)}
+    {switch hat {
+      | #christmass => React.string("christmass")
+      | #alecell => React.string("alecell")
+    }}
   </div>
 }
