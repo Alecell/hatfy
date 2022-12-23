@@ -9,6 +9,9 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve("dist"),
     publicPath: "/",
+    umdNamedDefine: true,
+    libraryTarget: 'umd', 
+
   },
   module: {
     rules:[
@@ -25,11 +28,41 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+        exclude: [
+          __dirname + './src'
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ], 
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
-  ]
+  resolve: {      
+    alias: {          
+        'react': path.resolve(__dirname, './node_modules/react'),
+      'react-dom': path.resolve(__dirname, './node_modules/react-dom'),      
+    }  
+  },  
+  externals: {          
+    react: {          
+        commonjs: "react",          
+        commonjs2: "react",          
+        amd: "React",          
+        root: "React"      
+    },      
+    "react-dom": {          
+        commonjs: "react-dom",          
+        commonjs2: "react-dom",          
+        amd: "ReactDOM",          
+        root: "ReactDOM"      
+    }  
+  } 
 }

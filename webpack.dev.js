@@ -25,6 +25,21 @@ module.exports = {
         test: /\.html$/i,
         loader: "html-loader",
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+        exclude: [
+          __dirname + './src'
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ], 
   },
 }

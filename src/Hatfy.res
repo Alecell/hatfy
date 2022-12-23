@@ -1,14 +1,24 @@
+@module("./alecell.svg")
+external alecell: string = "default"
+
+@module("./christmas.svg")
+external christmas: string = "default"
+
+%%raw("import './styles.css'")
+
 type hats = [
-  | #christmass
+  | #christmas
   | #alecell
 ]
 
 @react.component
-let make = (~hat: hats) => {
-  <div>
+let make = (~hat: hats, ~children: React.element) => {
+  <div className="container">
     {switch hat {
-      | #christmass => React.string("christmass")
-      | #alecell => React.string("alecell")
+      | #christmas => <img className="image" src=christmas />
+      | #alecell => <img className="image" src=alecell />
     }}
+
+    children
   </div>
 }
